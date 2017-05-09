@@ -1,0 +1,4 @@
+- platform: nest
+  monitored_conditions:
+    - 'fan'
+    - 'hvac_ac_state'

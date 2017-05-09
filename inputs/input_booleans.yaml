@@ -1,0 +1,4 @@
+  alarm_status:
+    name: Alarm Status
+    initial: off
+    icon: mdi:security

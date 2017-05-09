@@ -1,0 +1,181 @@
+####################################################################################
+#                                                                                  #
+#                                                                                  #
+#                                VIEWS                                             #
+#                                                                                  #
+#                                                                                  #
+####################################################################################
+
+default_view:
+  view: yes
+  entities:
+  - group.newcastlehome
+  - group.everydoor
+  - group.everylight
+  - group.mediaplayers
+  - group.frontcameras
+  - group.insidecameras
+  - group.backcameras
+
+newcastlesensors:
+  name: Archives
+  view: yes
+  icon: 'mdi:archive'
+  entities: 
+  - group.atticsensors
+  - group.weathersensors
+  - group.scenelist
+  - group.esp8266
+  - group.homesensors
+  - group.automationlist
+  - group.rpisensors
+  
+cameragrid:
+  name: cams
+  view: yes
+  icon: 'mdi:camcorder'
+  entities:
+  - group.frontcameras
+  - group.insidecameras
+  - group.backcameras
+
+####################################################################################
+#                                                                                  #
+#                                                                                  #
+#                                GROUPS                                            #
+#                                                                                  #
+#                                                                                  #
+####################################################################################
+
+newcastlehome:
+    name: Home
+    entities:
+    - climate.hallway
+    - input_boolean.alarm_status
+    - switch.doorbell_ringer
+    - device_tracker.mrbuddy7
+    - sensor.battery_mrbuddy7
+    - device_tracker.gracesiphone
+    - sensor.battery_gracesiphone
+
+everydoor:
+    name: Doors
+    entities:
+    - binary_sensor.front_door
+#    - binary_sensor.bedroom_one_door
+#    - binary_sensor.bedroom_two_door
+    - cover.garage_door
+    - binary_sensor.garage_laundry_door
+    - binary_sensor.garage_side_door
+
+everylight:
+    name: Lights
+    entities:
+    - light.porch_light
+    - light.garage_lanterns
+    - light.corner_light
+    - light.mb_light
+    - light.mb_closet_light
+    - light.backyard_west_light
+    - light.back_porch_accent_light
+
+#Fans:
+#  - switch.laundry_vent_fan
+#  - switch.masterbath_vent_fan
+#  - switch.guestbath_vent_fan
+#OTHER:
+#   - media_player.iTunes
+
+insidecameras:
+    name: Inside Cameras
+    entities:  
+    - camera.front_entry_camera
+    - camera.garage_camera
+
+frontcameras:
+    name: Front Cameras
+    entities:  
+    - camera.front_porch_camera
+    - camera.driveway_camera
+
+backcameras:
+    name: Back Cameras
+    entities:  
+    - camera.back_porch_camera
+    - camera.back_yard_camera
+
+weathersensors:
+    name: Weather Sensors
+    entities:  
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_dew_point
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_precip_intensity
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_daily_high_temperature
+    - sensor.dark_sky_daily_low_temperature
+    - sensor.dark_sky_daily_max_precip_intensity
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_pressure
+
+homesensors:
+    name: Home Sensors
+    entities:
+    - input_select.trash_cycle
+    - binary_sensor.hallway_fan
+    - binary_sensor.hallway_hvac_ac_state
+    - binary_sensor.doorbell
+
+rpisensors:
+    name: Computer Sensors
+    entities:
+    - sensor.cpu_temperature
+    - sensor.disk_free_
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+esp8266:
+    name: esp8266 Devices
+    entities:
+    - binary_sensor.garagewemos
+    - binary_sensor.frontdoorwemos
+    - binary_sensor.sonoff_corner_lamp
+    - binary_sensor.sonoff_mb_closet
+    - binary_sensor.sonoff_mb_light
+    - binary_sensor.sonoff_backyard_west_light
+    - binary_sensor.sonoff_back_porch_accent_light
+#Laundry:
+#  - switch.laundry_vent_fan
+atticsensors:
+    name: Attic
+    entities:
+    - sensor.attic_temperature
+    - sensor.attic_humidity
+
+scenelist:
+    name: Scenes
+    entities:  
+    - scene.goodnight_all
+    - scene.welcome_home
+    - scene.sleeping_kids
+    - scene.set_all_home
+
+automationlist:
+    name: Automations
+    entities:  
+    - automation.alarm_violation_doors
+    - automation.alternate_doorbell
+    - automation.front_door_still_open
+    - automation.garage_door_still_open
+    - automation.garage_side_door_still_open
+    - automation.laundry_door_still_open
+    - automation.power_down_the_house
+    - automation.sunset_the_lights
+    - automation.turn_off_mb_closet_light_with_timer
+ #   - automation.keep_christmas_spirit
+ 
+mediaplayers:
+    name: Media Players
+    entities:
+    - media_player.living_room_tv

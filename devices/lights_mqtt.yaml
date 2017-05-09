@@ -1,0 +1,35 @@
+  - platform: mqtt
+    state_topic: "places/newcastle/driveway/garagelantern/state"
+    command_topic: "places/newcastle/driveway/garagelantern/switch"
+    name: "Garage Lanterns"
+    qos: 1
+  - platform: mqtt
+    state_topic: "places/newcastle/porch/front/light/state"
+    command_topic: "places/newcastle/porch/front/light/switch"
+    name: "Porch Light"
+    qos: 1
+  - platform: mqtt
+    state_topic: "places/newcastle/house/living/corner_lamp/state"
+    command_topic: "places/newcastle/house/living/corner_lamp/switch"
+    name: "Corner Light"
+    qos: 1
+  - platform: mqtt
+    state_topic: "places/newcastle/house/bedroom/master/closet/light/state"
+    command_topic: "places/newcastle/house/bedroom/master/closet/light/switch"
+    name: "MB Closet Light"
+    qos: 2
+  - platform: mqtt
+    state_topic: "places/newcastle/house/bedroom/master/light/state"
+    command_topic: "places/newcastle/house/bedroom/master/light/switch"
+    name: "MB Light"
+    qos: 2
+  - platform: mqtt
+    state_topic: "places/newcastle/house/yard/back/west/light/state"
+    command_topic: "places/newcastle/house/yard/back/west/light/switch"
+    name: "Backyard West Light"
+    qos: 2
+  - platform: mqtt
+    state_topic: "places/newcastle/porch/back/accent_light/state"
+    command_topic: "places/newcastle/porch/back/accent_light/switch"
+    name: "Back Porch Accent Light"
+    qos: 2

@@ -1,0 +1,37 @@
+  - name: 'goodnight all'
+    entities:
+      group.everylight:
+        state: off
+
+  - name: 'welcome home'
+    entities:
+      light.corner_light:
+        state: on
+      light.garage_lanterns:
+        state: on
+
+  - name: 'sleeping kids'
+    entities:
+      switch.doorbell_ringer:
+        state: off
+
+  - name: 'Set All Home'
+    entities:
+      device_tracker.mrbuddys6:
+        state: home
+      device_tracker.gracesiphone:
+        state: home
+
+#  - name: 'christmas spirit'
+#    entities:
+#      light.christmas_light:
+#        state: on
+
+  - name: 'exterior lights off'
+    entities:
+      light.garage_lanterns:
+        state: off
+      light.porch_light:
+        state: off
+      light.backyard_west_light:
+        state: off

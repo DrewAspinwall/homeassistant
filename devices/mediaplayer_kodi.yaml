@@ -1,0 +1,9 @@
+  - media_player:
+    platform: kodi
+    host: http://172.16.1.168
+    port: 8080
+    name: XMBCporch
+    user: xmbc
+    password: play
+    turn_off_action: shutdown
+  

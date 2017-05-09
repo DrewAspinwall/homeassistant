@@ -1,0 +1,12 @@
+  - platform: mjpeg
+    mjpeg_url: http://172.16.1.210:8080/video
+    name: back porch camera
+  - platform: mjpeg
+    mjpeg_url: http://172.16.1.212:8080/video
+    name: garage camera
+  - platform: mjpeg
+    mjpeg_url: http://172.16.1.211:8080/video
+    name: back yard camera
+  - platform: mjpeg
+    mjpeg_url: http://172.16.1.213:8080/video
+    name: entry camera

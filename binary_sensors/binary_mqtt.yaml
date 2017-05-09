@@ -1,0 +1,84 @@
+  - platform: mqtt
+    state_topic: "places/newcastle/house/garage/mandoor/state"
+    name: "Garage Side Door"
+    qos: 2
+    payload_on: "open"
+    payload_off: "closed"
+    sensor_class: opening
+  - platform: mqtt
+    state_topic: "places/newcastle/house/garage/laundrydoor/state"
+    name: "Garage Laundry Door"
+    payload_on: "open"
+    payload_off: "closed"
+    sensor_class: opening
+    qos: 2
+#  - platform: mqtt
+#    state_topic: "places/newcastle/house/bedrooms/one/door/state"
+#    name: "Bedroom One Door"
+#    payload_on: "open"
+#    payload_off: "closed"
+#    sensor_class: opening
+#    qos: 2
+#    #value_template: ""  
+#  - platform: mqtt
+#    state_topic: "places/newcastle/house/bedrooms/two/door/state"
+#    name: "Bedroom Two Door"
+#    payload_on: "open"
+#    payload_off: "closed"
+#    sensor_class: opening
+#    qos: 2
+  - platform: mqtt
+    state_topic: "places/newcastle/house/common/entry/door/state"
+    name: "Front Door"
+    payload_on: "open"
+    payload_off: "closed"
+    sensor_class: opening
+    qos: 2
+  - platform: mqtt
+    state_topic: "places/newcastle/house/common/doorbell/switch/toggle"
+    name: "Doorbell"
+    payload_on: "1"
+    payload_off: "0"
+    qos: 1
+  - platform: mqtt
+    state_topic: "clients/wemos_garage/state"
+    name: "GarageWemos"
+    payload_on: "Connected"
+    payload_off: "Disconnected"
+    qos: 2
+  - platform: mqtt
+    state_topic: "clients/wemos_frontdoor/state"
+    name: "FrontDoorWemos"
+    payload_on: "Connected"
+    payload_off: "Disconnected"
+    qos: 2
+  - platform: mqtt
+    state_topic: "clients/sonoff/corner_lamp/state"
+    name: "Sonoff Corner Lamp"
+    payload_on: "Connected"
+    payload_off: "Disconnected"
+    qos: 2
+  - platform: mqtt
+    state_topic: "clients/sonoff/mb_closet_light/state"
+    name: "Sonoff MB Closet"
+    payload_on: "Connected"
+    payload_off: "Disconnected"
+    qos: 2
+  - platform: mqtt
+    state_topic: "clients/sonoff/mb_light/state"
+    name: "Sonoff MB Light"
+    payload_on: "Connected"
+    payload_off: "Disconnected"
+    qos: 2
+  - platform: mqtt
+    state_topic: "clients/sonoff/backyard_light_west/state"
+    name: "Sonoff Backyard West Light"
+    payload_on: "Connected"
+    payload_off: "Disconnected"
+    qos: 2
+  - platform: mqtt
+    state_topic: "clients/sonoff/backporch_light_accent/state"
+    name: "Sonoff Back Porch Accent Light"
+    payload_on: "Connected"
+    payload_off: "Disconnected"
+    qos: 2

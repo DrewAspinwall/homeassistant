@@ -1,0 +1,11 @@
+  platform: mqtt
+  state_topic: "places/newcastle/house/garage/rolldoor/state"
+  command_topic: "places/newcastle/house/garage/rolldoor/toggle"
+  name: "Garage Door"
+  optimistic: true
+  qos: 2
+  retain: false
+  payload_open: "OPEN"
+  payload_close: "OPEN"
+  state_open: "open"
+  state_closed: "closed"

@@ -1,0 +1,9 @@
+  platform: webostv
+  host: 172.16.1.166
+  mac: 14:C9:13:B8:90:4E
+  name: Living Room TV
+  customize:
+    sources:
+      - livetv
+      - netflix
+      - hulu

@@ -1,0 +1,12 @@
+  - platform: generic
+    still_image_url: http://172.16.1.210:8080/photo.jpg
+    name: back porch camera
+  - platform: generic
+    still_image_url: http://172.16.1.212:8080/photo.jpg
+    name: east lawn camera
+  - platform: generic
+    still_image_url: http://172.16.1.211:8080/photo.jpg
+    name: back yard camera
+  - platform: generic
+    still_image_url: http://172.16.1.213:8080/photo.jpg
+    name: front porch camera

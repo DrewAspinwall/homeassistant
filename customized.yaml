@@ -1,0 +1,60 @@
+#     sensor.weather_precip_intensity:
+#       friendly_name: 'Rainfall'
+       #entity_picture: https://dl.dropboxusercontent.com/u/81386/HA-Stuff/rain-icon.jpg
+     switch.WeMo0FC:
+       friendly_name: Corner Light
+       icon: mdi:lightbulb
+     sensor.dark_sky_humidity:
+       friendly_name: 'Outdoor Humidity'
+       icon: mdi:water-percent
+     sensor.dark_sky_temperature:
+       friendly_name: 'Outdoor Temp'
+     sensor.dark_sky_apparent_temperature:
+       friendly_name: 'Outdoor Heat Index'
+     sensor.dark_sky_temperature_max:
+       friendly_name: 'Daily High'
+     sensor.dark_sky_temperature_min:
+       friendly_name: 'Daily Low'
+     sensor.dark_sky_precip_intensity:
+       hidden: true
+     sensor.dark_sky_precip_probability:
+       friendly_name: 'Rain Chance'
+     sensor.dark_sky_precip_intensity_max:
+       friendly_name: 'Expected Rainfall'
+     sensor.dark_sky_dew_point:
+       hidden: true
+     device_tracker.mrbuddy7:
+       friendly_name: Drew
+       entity_picture: //public.drewaspinwall.com/drewa.png
+     device_tracker.gracesiphone:
+       friendly_name: Grace
+       entity_picture: //public.drewaspinwall.com/gracea.png
+     sensor.battery_mrbuddy7:
+       friendly_name: Drew Battery
+       icon: mdi:battery-80
+     sensor.battery_gracesiphone:
+       friendly_name: Grace Battery
+       icon: mdi:battery-80
+     climate.hallway:
+       entity_picture: //public.drewaspinwall.com/nest_learning_thermostat.png
+       friendly_name: 'Nest'
+       unit_of_measurement: '°F'
+     sensor.garage_temperature:
+       icon: mdi:temperature
+     sensor.garage_humidity:
+       icon: mdi:water-percent
+     switch.doorbell_ringer:
+       icon: mdi:bell
+     script.front_door_alarm:
+       hidden: true
+       icon: mdi:playlist-play
+     script.garage_side_door_alarm:
+       hidden: true
+       icon: mdi:playlist-play
+     script.laundry_door_alarm:
+       hidden: true
+       icon: mdi:playlist-play
+     script.garage_door_alarm:
+       hidden: true
+       icon: mdi:playlist-play
+   

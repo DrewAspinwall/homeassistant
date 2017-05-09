@@ -1,0 +1,6 @@
+  - platform: ffmpeg_motion
+    input: rtsp://172.16.1.216/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp
+    name: front porch camera motion
+  - platform: ffmpeg_motion
+    input: rtsp://172.16.1.217/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp
+    name: driveway camera motion

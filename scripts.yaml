@@ -1,0 +1,59 @@
+  front_door_alarm:
+    alias: "Front Door Open Time"
+    sequence:
+     - delay:
+         minutes: 5
+     - service: notify.aspinwallpb
+       data:
+         message: "The front door is still open"
+         title: "Front Door Open"
+         target: "channel/svz6x8x8qvrrg49n"
+  laundry_door_alarm:
+    alias: "Laundry Door Open Time"
+    sequence:
+     - delay:
+         minutes: 5
+     - service: notify.aspinwallpb
+       data:
+         message: "The laundry door is still open"
+         title: "Laundry Door Open"
+         target: "channel/svz6x8x8qvrrg49n"
+  garage_side_door_alarm:
+    alias: "Garage Side Door Open Time"
+    sequence:
+     - delay:
+         minutes: 5
+     - service: notify.aspinwallpb
+       data:
+         message: "The side garage door is still open"
+         title: "Garage Side Door Open"
+         target: "channel/svz6x8x8qvrrg49n"
+  garage_door_alarm:
+    alias: "Garage Door Open Time"
+    sequence:
+     - delay:
+         minutes: 5
+     - service: notify.aspinwallpb
+       data:
+         message: "The garage door is still open"
+         title: "Garage Door Open"
+         target: "channel/svz6x8x8qvrrg49n"
+  mb_closet_light_timer:
+    alias: "MB Closet Light Timer"
+    sequence:
+      # Cancel old timers
+      - service: script.turn_off
+        data:
+           entity_id: script.mb_closet_light_timer_off
+      # Set new timer
+      - service: script.turn_on
+        data:
+          entity_id: script.mb_closet_light_timer_off
+  mb_closet_light_timer_off:
+    alias: "Turn MB closet light off"
+    sequence:
+     - delay:
+         minutes: 30
+     - service: light.turn_off
+       data:
+         entity_id: light.mb_closet_light

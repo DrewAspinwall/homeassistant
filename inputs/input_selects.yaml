@@ -1,0 +1,7 @@
+  trash_cycle:
+    name: Trash Week
+    options:
+    - Recycling
+    - Yard Debris
+    initial: Recycling
+    icon: mdi:delete

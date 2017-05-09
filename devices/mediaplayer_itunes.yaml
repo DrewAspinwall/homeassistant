@@ -1,0 +1,4 @@
+  platform: itunes
+  name: iTunes
+  host: http://172.16.1.172
+  port: 8181

@@ -1,0 +1,47 @@
+- name: MCSS
+  latitude: 42.3245684
+  longitude: -122.8768491
+  radius: 100
+  icon: mdi:motorbike
+ 
+- name: Church
+  latitude: 42.3143989
+  longitude: -122.8390327
+  radius: 100
+  icon: mdi:church
+ 
+- name: MCSS Dallas
+  latitude: 32.909869
+  longitude: -96.9920457
+  radius: 1000
+  icon: mdi:motorbike
+ 
+- name: DFW
+  latitude: 32.8997415
+  longitude: -97.0408341
+  radius: 2000
+  icon: mdi:airplane
+  
+- name: DEN
+  latitude: 39.8545397
+  longitude: -104.671899
+  radius: 4000
+  icon: mdi:airplane
+ 
+- name: SFO
+  latitude: 37.619693
+  longitude: -122.3790674
+  radius: 2000
+  icon: mdi:airplane
+ 
+- name: Target
+  latitude: 42.3472572
+  longitude: -122.8783401
+  radius: 75
+  icon: mdi:bullseye
+ 
+- name: DW Starbucks
+  latitude: 42.3601082
+  longitude: -122.8621632
+  radius: 75
+  icon: mdi:coffee

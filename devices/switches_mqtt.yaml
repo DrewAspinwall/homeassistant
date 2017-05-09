@@ -1,0 +1,18 @@
+  - platform: mqtt
+    name: "Laundry Vent Fan"
+    state_topic: "places/newcastle/house/laundry/fan/state"
+    command_topic: "places/newcastle/house/laundry/fan/toggle"
+    payload_on: 1
+    payload_off: 0
+    optimistic: false
+    qos: 0
+    retain: true
+  - platform: mqtt
+    name: "Doorbell Ringer"
+    state_topic: "places/newcastle/house/common/doorbell/ringer/status"
+    command_topic: "places/newcastle/house/common/doorbell/ringer/permission"
+    payload_on: 1
+    payload_off: 0
+    optimistic: false
+    qos: 1
+    retain: true

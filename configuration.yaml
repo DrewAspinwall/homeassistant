@@ -1,0 +1,156 @@
+homeassistant:
+  name: Newcastle
+  unit_system: imperial
+  time_zone: America/Los_Angeles
+  latitude: !secret newcastle_lat
+  longitude: !secret newcastle_long
+  elevation: 409
+  customize: !include customized.yaml
+
+http:
+  api_password: !secret http_password
+
+sun:
+logbook:
+logger:
+  default: error
+  logs:
+    homeassistant.components.device_tracker: critical
+    homeassistant.components.camera: critical
+updater:
+frontend:
+history:
+recorder:
+  purge_days: 14
+
+mqtt:
+  
+#hdmi_cec:
+#  devices:
+#    0: Vizio40
+#    1: Blu-Ray
+#    2: AppleTV-LR
+
+wemo:
+  static: 
+    - 172.16.1.201
+
+nest:
+  client_id: ae3f1a16-52f2-49d4-93e8-e2ce7b58fe97
+  client_secret:  !secret nest_secret
+
+climate:
+  platform: nest
+  unit_of_measurement: "°F"
+  icon_template: '{%- if is_state("hallway_operation_mode", "heat") %}mdi:radiator{%- elif is_state("hallway_operation_mode", "cool") %}mdi:snowflake{%- elif is_state("hallway_operation_mode", "eco") %}mdi:leaf {%- elif is_state("hallway_operation_mode", "auto") %}mdi:theme-light-dark{%- elif is_state("hallway_operation_mode", "off") %}mdi:close{% else %}  mdi:help{% endif %}'
+
+#device_tracker:
+#  platform: icloud
+#  username: drewa@me.com
+#  password: !secret icloud_key
+#  interval: 60
+
+notify:
+  platform: pushbullet
+  api_key: !secret pushbullet_key
+  name: aspinwallpb
+
+notify 2:
+  platform: webostv
+  host: 172.16.1.166
+  name: livingroom_tv 
+
+#binary_sensor: !include binary_sensors/binary_nest.yaml
+binary_sensor 2: !include binary_sensors/binary_mqtt.yaml
+#binary_sensor 3: !include binary_sensors/binary_ffmpeg-motion.yaml
+sensor: !include sensors/sensor_forecast.yaml
+sensor 2: !include sensors/sensor_mqtt.yaml
+switch: !include devices/switches_mqtt.yaml
+light: !include devices/lights_mqtt.yaml
+cover: !include devices/garagedoor_mqtt.yaml
+#camera: !include devices/cameras_mpeg.yaml
+camera 2: !include devices/cameras_rtsp.yaml
+android_ip_webcam: !include devices/cameras_android-ip.yaml
+input_select: !include inputs/input_selects.yaml
+input_boolean: !include inputs/input_booleans.yaml
+zone: !include zones.yaml
+media_player: !include devices/mediaplayer_LGTV.yaml
+media_player 2: !include devices/mediaplayer_appletv.yaml
+#media_player: !include devices/mediaplayer_itunes.yaml
+#media_player: !include devices/mediaplayer_kodi.yaml
+
+##sensor 3: 
+##  platform: template
+##  sensors:
+##    battery_mrbuddy7:
+##      unit_of_measurement: '%'
+##      value_template: >-
+##          {%- if states.device_tracker.mrbuddy7.attributes.battery %}
+##              {{ states.device_tracker.mrbuddy7.attributes.battery | round()  }}
+##          {% else %}
+##              Unknown
+##          {%- endif %}
+##      icon_template: '{%- if is_state("sensor.battery_mrbuddy7", "unknown") %}mdi:battery-unknown{%- elif is_state_attr("device_tracker.mrbuddy7", "battery_status", "Charging") %}mdi:battery-charging{%- elif  states.device_tracker.mrbuddy7.attributes.battery <= 5 %}mdi:battery-outline{%- elif states.device_tracker.mrbuddy7.attributes.battery >= 95 %}mdi:battery{% else %}mdi:battery-{{(states.device_tracker.mrbuddy7.attributes.battery|float / 10)|round*10}}{%- endif %}'
+##    battery_gracesiphone:
+##      unit_of_measurement: '%'
+##      value_template: >-
+##          {%- if states.device_tracker.gracesiphone.attributes.battery %}
+##              {{ states.device_tracker.gracesiphone.attributes.battery | round()  }}
+##          {% else %}
+##              Unknown
+##          {%- endif %}
+##      icon_template: '{%- if is_state("sensor.battery_gracesiphone", "unknown") %}mdi:battery-unknown{%- elif is_state_attr("device_tracker.gracesiphone", "battery_status", "Charging") %}mdi:battery-charging{%- elif  states.device_tracker.gracesiphone.attributes.battery <= 5 %}mdi:battery-outline{%- elif states.device_tracker.gracesiphone.attributes.battery >= 95 %}mdi:battery{% else %}mdi:battery-{{(states.device_tracker.gracesiphone.attributes.battery|float / 10)|round*10}}{%- endif %}'
+#sensor 4: 
+#  platform: template
+#  sensors:
+#    hallway_thermostat_online:   
+#      icon_template: '{%- if is_state("binary_sensor.hallway_thermostat_online", "on") %}mdi:cloud-check{%- elif is_state("binary_sensor.hallway_thermostat_online", "off") %}mdi:cloud-off-outline{% else %}mdi:help{% endif %}' 
+
+
+sensor 6:
+  platform: systemmonitor
+  resources:
+    - type: disk_free
+      arg: /
+sensor 7:
+  platform: speedtest
+  server_id: 1446
+  minute: 12
+  hour:
+  - 0
+  - 6
+  - 9
+  - 12
+  - 15
+  - 18
+  - 21
+  monitored_conditions:
+  - ping
+  - download
+  - upload
+
+sensor 8:
+  platform: command_line
+  name: CPU Temperature
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°F"
+  value_template: '{{ value | multiply(0.0018) + 32 | round(1) }}'
+  
+#sensor 9:
+#  platform: apcupsd
+#  resources:
+#    - bcharge
+#    - linev
+#    - loadpct
+#    - nominv
+#    - nompower
+#    - numxfers
+#    - outputv
+#    - status
+#    - timeleft
+#    - tonbatt
+
+group: !include groups.yaml
+scene: !include scenes.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml

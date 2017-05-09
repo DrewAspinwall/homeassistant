@@ -1,0 +1,11 @@
+  - platform: mqtt
+    state_topic: "places/newcastle/house/attic/enviroment/temperature"
+    name: "Attic Temperature"
+    qos: 2
+    unit_of_measurement: "°F"
+    #value_template: ""
+  - platform: mqtt
+    state_topic: "places/newcastle/house/attic/enviroment/humidity"
+    name: "Attic Humidity"
+    qos: 2
+    unit_of_measurement: "%"

@@ -1,0 +1,171 @@
+  - alias: 'sunset the lights'
+    trigger:
+      platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      below: 3
+    action:
+      service: scene.turn_on
+      entity_id: scene.welcome_home
+
+  - alias: 'sunrise lights'
+    trigger:
+      platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      above: 1
+    action:
+      service: scene.turn_on
+      entity_id: scene.exterior_lights_off
+
+#  - alias: 'keep christmas spirit'
+#    trigger:
+#      platform: time
+#      after: '07:45'
+#    action:
+#      service: scene.turn_on
+#      entity_id: scene.christmas_spirit
+
+  - alias: 'power down the house'
+    trigger:
+      platform: time
+      after: '22:25'
+    action:
+      service: scene.turn_on
+      entity_id: scene.goodnight_all
+
+  - alias: 'alternate doorbell'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.doorbell
+      from: 'off'
+      to: 'on'
+    condition:
+      condition: or
+      conditions:
+      - condition: state
+        entity_id: switch.doorbell_ringer
+        state: 'off'
+      - condition: state
+        entity_id: 'device_tracker.gracesiphone'
+        state: 'not_home'
+    action:
+      service: notify.aspinwallpb
+      data:
+        target: "channel/svz6x8x8qvrrg49n"
+        title: "Doorbell!"
+        message: "Ding! Dong! Doorbell!"
+
+  - alias: 'alarm violation doors'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.front_door
+        from: 'off'
+        to: 'on'
+      - platform: state
+        entity_id: binary_sensor.garage_laundry_door
+        from: 'off'
+        to: 'on'  
+      - platform: state
+        entity_id: binary_sensor.garage_side_door
+        from: 'off'
+        to: 'on'  
+    condition:
+      condition: state
+      entity_id: input_boolean.alarm_status
+      state: 'on'
+    action:
+      service: notify.aspinwallpb
+      data_template:
+        message: '{{trigger.entity_id}} has been opened!'
+        target: 'channel/svz6x8x8qvrrg49n'
+        title: 'Alarm! Door Open!'
+
+  - alias: 'Front door still open'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.front_door
+      from: 'off'
+      to: 'on'
+    action:
+      service: homeassistant.turn_on
+      entity_id: script.front_door_alarm
+
+  - alias: 'Front door was closed'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.front_door
+      from: 'on'
+      to: 'off'
+    action:
+      service: homeassistant.turn_off
+      entity_id: script.front_door_alarm
+
+  - alias: 'Laundry door still open'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.garage_laundry_door
+      from: 'off'
+      to: 'on'
+    action:
+      service: homeassistant.turn_on
+      entity_id: script.laundry_door_alarm
+
+  - alias: 'Laundry door was closed'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.garage_laundry_door
+      from: 'on'
+      to: 'off'
+    action:
+      service: homeassistant.turn_off
+      entity_id: script.laundry_door_alarm
+
+  - alias: 'Garage side door still open'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.garage_side_door
+      from: 'off'
+      to: 'on'
+    action:
+      service: homeassistant.turn_on
+      entity_id: script.garage_side_door_alarm
+
+  - alias: 'Garage side door was closed'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.garage_side_door
+      from: 'on'
+      to: 'off'
+    action:
+      service: homeassistant.turn_off
+      entity_id: script.garage_side_door_alarm
+
+  - alias: 'Garage door still open'
+    trigger:
+      platform: state
+      entity_id: cover.garage_door
+      from: 'closed'
+      to: 'open'
+    action:
+      service: homeassistant.turn_on
+      entity_id: script.garage_door_alarm
+
+  - alias: 'Garage door was closed'
+    trigger:
+      platform: state
+      entity_id: cover.garage_door
+      from: 'open'
+      to: 'closed'
+    action:
+      service: homeassistant.turn_off
+      entity_id: script.garage_door_alarm
+
+  - alias: 'Turn off MB closet light with timer'
+    trigger:
+      platform: state
+      entity_id: light.mb_closet_light
+      to: 'on'
+    action:
+      service: homeassistant.turn_on
+      entity_id: script.mb_closet_light_timer
